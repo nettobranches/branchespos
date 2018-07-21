@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/fontawesome/css/all.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/admin.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <!-- <link href="/stylesheets/bootstrap.custom.css" rel="stylesheet"> -->
+    <!-- Custom CSS for the 'Business Frontpage' Template -->
+    <!-- <link href="/stylesheets/theme.css" rel="stylesheet"> -->
+  </head>
+  <body>
+
+    <%- include('panel', {view: view, id: id}); %>
+
+    <script src="/javascripts/jquery-1.10.2.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <script src="/javascripts/moment.js"></script>
+    <script src="/javascripts/vue.min.js"></script>
+    <script src="/javascripts/vue-router.js"></script>
+    <script src="/javascripts/accounting.min.js"></script>
+    <script src="/javascripts/axios.min.js"></script>
+    <script src="/javascripts/barcode.js"></script>
+    <script src="/javascripts/pos.js"></script>
+    <script src="/javascripts/views/<%= view %>.js"></script>
+  </body>
+</html>

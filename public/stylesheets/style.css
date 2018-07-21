@@ -1,0 +1,25 @@
+.results{
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.cart{
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.pagar{
+  margin: 20px 0 10px;
+}
+.pagar .input-group-addon{
+  font-size: 30px;
+}
+.pagar .input-lg{
+  font-size: 30px;
+}
+
+.pagar-btn{
+  margin: 20px 0 10px;
+}
+
+/*# sourceMappingURL=style.css.map */

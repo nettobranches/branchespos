@@ -1,0 +1,51 @@
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Historial <small></small></h1>
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active"><i class="fa fa-table"></i> Historial</li>
+    </ol>
+
+  </div>
+</div><!-- /.row -->
+<!--
+<div class="row">
+  <div class="col-lg-12">
+      <h2>Búsqueda</h2>
+        <div class="form-group input-group">
+          <input v-model="searchFld"  type="text" class="form-control" v-on:keyup.enter="caja_search">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+          </span>
+        </div>
+  </div>
+</div><!-- /.row -->
+<a target="_blank" href ="/api/ventas/export.csv"> Descarga reporte </a>
+
+
+<div class="row ">
+  <div class="col-lg-12">
+    <h2>Ventas</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped tablesorter">
+        <thead>
+          <tr>
+            <th class="header">Folio <i class="fa fa-sort"></i></th>
+            <th class="header">Fecha <i class="fa fa-sort"></i></th>
+            <th class="header">Productos <i class="fa fa-sort"></i></th>
+            <th class="header">Total <i class="fa fa-sort"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, key) in ventas" >
+            <td>{{item.id}}</td>
+            <td>{{format_fecha(item.fecha) | formatDate}}</td>
+            <td><div v-for="prods in format_productos(item.json)"> {{prods.nombre}} {{prods.color}} {{prods.talla}} | {{prods.cantidad}} X {{prods.p_u | currency}} | {{prods.importe | currency}} </div></td>
+            <td>{{item.total | currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><!-- /.row -->

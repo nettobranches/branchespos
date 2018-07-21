@@ -1,0 +1,38 @@
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Inventario <small> {{inventario[0].name}} </small></h1>
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="/inventario"><i class="fa fa-dashboard"></i> Inventario </a></li>
+      <li class="active"><i class="fa fa-table"></i> {{inventario[0].name}}</li>
+    </ol>
+
+  </div>
+</div><!-- /.row -->
+
+<div class="row">
+  <div class="col-lg-12">
+    <h2>Existencias</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped tablesorter">
+        <thead>
+          <tr>
+            <th class="header">Id <i class="fa fa-sort"></i></th>
+            <th class="header">UPC <i class="fa fa-sort"></i></th>
+            <th class="header">Nombre <i class="fa fa-sort"></i></th>
+            <th class="header">Existencias <i class="fa fa-sort"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in inventario" >
+            <td>{{item.id}}</td>
+            <td> <input type="text" />  </td>
+            <td>{{item.des}}</td>
+            <td> <input type="text" v-model="item.quantity"/>  </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><!-- /.row -->
