@@ -31,7 +31,8 @@ var vm = new Vue({
     cambio: 0,
     nitem:{},
     nitemIdx: 0,
-    imprimir_ticket: true
+    imprimir_ticket: true,
+    cVenta: []
   },
   methods:{
     sync_prods: function(){
@@ -208,6 +209,14 @@ var vm = new Vue({
         _this.cambio = 0;
         $('#modalPago').modal('hide');
     }// caja_limpiar
+    ,ticket_search: function(){
+      var _this = this;
+      postDoc('/api/ventas/ticket',{search_fld: _this.searchFld}, function(res){
+        console.log('productos', res.items);
+        _this.cVenta =  JSON.parse(res.items[0].json);
+        _this.searchFld = '';
+      });
+    }// caja_search
   }
 });
 

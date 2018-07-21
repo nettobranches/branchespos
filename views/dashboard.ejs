@@ -1,6 +1,6 @@
 <light-bulb></light-bulb>
 <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-6">
             <div class="panel panel-success">
               <div class="panel-heading">
                 <div class="row">
@@ -8,7 +8,7 @@
                     <i class="fa fa-shopping-basket fa-5x"></i>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <p class="announcement-heading"> {{resumen[0].num}} </p>
+                    <p class="announcement-heading"> {{ resumen[0].tot | currency }} </p>
                     <p class="announcement-text">Ventas hoy</p>
                   </div>
                 </div>
@@ -28,7 +28,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3">
+          <div class="col-lg-6">
             <div class="panel panel-success">
               <div class="panel-heading">
                 <div class="row">
@@ -36,7 +36,7 @@
                     <i class="fa fa-shopping-cart fa-5x"></i>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <p class="announcement-heading"> {{resumen[0].num}} </p>
+                    <p class="announcement-heading"> {{ resumen[0].tot | currency }} </p>
                     <p class="announcement-text">Ventas semana</p>
                   </div>
                 </div>
@@ -56,7 +56,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3">
+          <div class="col-lg-6">
             <div class="panel panel-success">
               <div class="panel-heading">
                 <div class="row">
@@ -64,7 +64,7 @@
                     <i class="fa fa-calendar fa-5x"></i>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <p class="announcement-heading"> {{resumen[0].num}} </p>
+                    <p class="announcement-heading"> {{ resumen[0].tot | currency }} </p>
                     <p class="announcement-text">Ventas mes</p>
                   </div>
                 </div>

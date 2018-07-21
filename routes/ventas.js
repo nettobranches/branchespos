@@ -97,4 +97,14 @@ router.get('/fixdates', function(req, res, next){
     })
 });
 
+router.post('/ticket', function(req, res, next){
+    var search = req.body;
+    model.getTicket(search.search_fld).then(function(rTicket){
+      console.log('rTicket', rTicket);
+      res.send({items:rTicket, success: true});
+    }).catch(function(err){
+      res.send({items:[], success: false});
+    });
+});
+
 module.exports = router;
