@@ -8,7 +8,8 @@ var Promise = require('bluebird');
 var _ = require('lodash');
 var db = require('../controllers/sqlite.controller');
 
-
+var url = "";
+var propertiesObject = { ws_key:'', display:'full', output_format: 'JSON' };
 
 /* GET users listing. */
 router.get('/sync/prods', function(req, res, next) {
