@@ -32,7 +32,8 @@ var vm = new Vue({
     nitem:{},
     nitemIdx: 0,
     imprimir_ticket: true,
-    cVenta: []
+    cVenta: [],
+    cVentaDetalle: {}
   },
   methods:{
     sync_prods: function(){
@@ -213,6 +214,7 @@ var vm = new Vue({
       var _this = this;
       postDoc('/api/ventas/ticket',{search_fld: _this.searchFld}, function(res){
         console.log('productos', res.items);
+        _this.cVentaDetalle = res.items[0];
         _this.cVenta =  JSON.parse(res.items[0].json);
         _this.searchFld = '';
       });

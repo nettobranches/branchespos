@@ -42,6 +42,24 @@ var model = {
             });
         })// promise
     } // save
+    ,saveProd: function(item){
+        return new Promise(function(resolve, reject){
+            var fecha = new Date();
+            var nFecha = moment(fecha).format("YYYY-MM-DD HH:mm:ss");
+            var qry = util.format('INSERT INTO ventas_productos (venta_id, codigo, nombre, talla, color, cantidad, p_u, descuento) VALUES( %s, \'%s\', \'%s\', \'%s\', \'%s\', %s, %s, %s)',
+            item.venta_id, item.codigo, item.nombre, item.talla || '', item.color || '', item.cantidad, item.p_u, item.descuento || 0);
+            console.log('qry', qry);
+            // resolve(item);
+            db.run(qry, function(err){
+                console.log('err', err);
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(item);
+                }
+            });
+        })// promise
+    } // saveProd
     ,getFolio: function(item){
         return new Promise(function(resolve, reject){
             var fecha = new Date();
@@ -61,11 +79,11 @@ var model = {
     ,ventasResumen: function(){
         return new Promise(function(resolve, reject){
             // var qry = util.format('SELECT * FROM %s ', table);
-            var qry = "SELECT 'dia' as tipo, COUNT(id) as num, SUM(total) as tot FROM ventas WHERE strftime('%Y-%m-%d', fecha) = strftime('%Y-%m-%d')\
+            var qry = "SELECT * FROM (SELECT 0 ord, 'dia' as tipo, COUNT(id) as num, SUM(total) as tot FROM ventas WHERE strftime('%Y-%m-%d', fecha) = strftime('%Y-%m-%d', date('now','-6 hours'))\
 UNION \
-SELECT 'semana' as tipo, COUNT(id) as num, SUM(total) as tot FROM ventas WHERE strftime('%Y-%W', fecha) = strftime('%Y-%W')\
+SELECT 1 ord, 'semana' as tipo, COUNT(id) as num, SUM(total) as tot FROM ventas WHERE strftime('%Y-%W', fecha) = strftime('%Y-%W', date('now','-6 hours'))\
 UNION \
-SELECT 'mes' as tipo, COUNT(id) as num, SUM(total) as tot FROM ventas WHERE strftime('%Y-%m', fecha) = strftime('%Y-%m')";
+SELECT 2 ord, 'mes' as tipo, COUNT(id) as num, SUM(total) as tot FROM ventas WHERE strftime('%Y-%m', fecha) = strftime('%Y-%m', date('now','-6 hours'))) ORDER BY ord";
             db.all(qry, function(err, rows) {
                 console.log('err', err);
                 console.log('rows', rows);

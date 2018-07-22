@@ -99,9 +99,7 @@ router.get('/fixdates', function(req, res, next){
 
 router.get('/fix_ventas_productos', function(req, res, next){
   model.list().then(function(mres){
-    return Promise.each(mres, function(item){
-        console.log('item', item.id,  nFecha);
-    });
+    return Promise.each(mres, eachVentas);
   }).then(function(param){
     // console.log('param', param);
     res.send({items:{}, success: true});
@@ -109,6 +107,22 @@ router.get('/fix_ventas_productos', function(req, res, next){
     res.send({items:[], success: false});
   })
 });
+
+var ticketId = 0;
+function eachVentas(item){
+    // console.log('item', item);
+    ticketId = item.id;
+    var prods = JSON.parse(item.json);
+    var aProds = Object.keys(prods).map(function (key) { return prods[key]; });
+    // console.log('prods', aProds);
+    return Promise.each(aProds, eachVProds)
+}
+
+function eachVProds(item){
+    // console.log('prod', item);
+    item.venta_id = ticketId;
+    return model.saveProd(item)
+}
 
 router.post('/ticket', function(req, res, next){
     var search = req.body;

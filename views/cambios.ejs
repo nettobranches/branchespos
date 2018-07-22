@@ -22,11 +22,36 @@
   </div>
 </div><!-- /.row -->
 
+<div class="row ">
+<h2>Detalles venta </h2>
+<div class="row">
+  <div class="col-lg-3">
+      <div class="form-group">
+          <label>Folio</label>
+          <input type="text" v-model="cVentaDetalle.id" class="form-control" disabled>
+          <!-- <p class="help-block">Example block-level help text here.</p> -->
+      </div>
+  </div>
+  <div class="col-lg-3">
+      <div class="form-group">
+          <label>Fecha</label>
+          <input type="text" v-model="cVentaDetalle.fecha" class="form-control" disabled>
+          <!-- <p class="help-block">Example block-level help text here.</p> -->
+      </div>
+  </div>
+  <div class="col-lg-3">
+      <div class="form-group">
+          <label>Total</label>
+          <input type="text" v-model="cVentaDetalle.total" class="form-control" disabled>
+          <!-- <p class="help-block">Example block-level help text here.</p> -->
+      </div>
+  </div>
+</div><!-- /.row -->
 
 <div class="row ">
   <div class="col-lg-12">
-    <h2>Articulos</h2>
-    <div class="table-responsive cart">
+    <h2>Articulos adquiridos</h2>
+    <div class="table-responsive">
       <table class="table table-bordered table-hover table-striped tablesorter">
         <thead>
           <tr>
@@ -35,10 +60,10 @@
             <th class="header">Talla. <i class="fa fa-sort"></i></th>
             <th class="header">Color. <i class="fa fa-sort"></i></th>
             <th class="header">Cantidad <i class="fa fa-sort"></i></th>
-            <th class="header">Un. <i class="fa fa-sort"></i></th>
             <th class="header">P/U. <i class="fa fa-sort"></i></th>
             <th class="header">Descuento <i class="fa fa-sort"></i></th>
             <th class="header">Importe <i class="fa fa-sort"></i></th>
+            <th class="header">Opciones </th>
           </tr>
         </thead>
         <tbody>
@@ -48,10 +73,10 @@
             <td> {{item.talla}} </td>
             <td> {{item.color}} </td>
             <td> {{item.cantidad}} </td>
-            <td> {{item.unidad}} </td>
             <td> {{item.p_u | currency}} </td>
             <td> {{item.discount}} </td>
             <td> {{item.importe | currency}} </td>
+            <td> <button v-on:click="" type="button" class="btn btn-warning">Cambiar</button> </td>
           </tr>
         </tbody>
       </table>
