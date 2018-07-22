@@ -82,19 +82,32 @@ router.get('/resumen', function(req, res, next){
 });
 
 router.get('/fixdates', function(req, res, next){
-    model.list().then(function(mres){
-      return Promise.each(mres, function(item){
-          var fecha = new Date(item.fecha);
-          var nFecha = moment(fecha).format("YYYY-MM-DD HH:MM:SS");
-          console.log('item', item.id,  nFecha);
-          return model.updateFecha(item.id, nFecha );
-      });
-    }).then(function(param){
-      // console.log('param', param);
-      res.send({items:{}, success: true});
-    }).catch(function(err){
-      res.send({items:[], success: false});
-    })
+    // model.list().then(function(mres){
+    //   return Promise.each(mres, function(item){
+    //       var fecha = new Date(item.fecha);
+    //       var nFecha = moment(fecha).format("YYYY-MM-DD HH:mm:ss");
+    //       console.log('item', item.id,  nFecha);
+    //       return model.updateFecha(item.id, nFecha );
+    //   });
+    // }).then(function(param){
+    //   // console.log('param', param);
+    //   res.send({items:{}, success: true});
+    // }).catch(function(err){
+    //   res.send({items:[], success: false});
+    // })
+});
+
+router.get('/fix_ventas_productos', function(req, res, next){
+  model.list().then(function(mres){
+    return Promise.each(mres, function(item){
+        console.log('item', item.id,  nFecha);
+    });
+  }).then(function(param){
+    // console.log('param', param);
+    res.send({items:{}, success: true});
+  }).catch(function(err){
+    res.send({items:[], success: false});
+  })
 });
 
 router.post('/ticket', function(req, res, next){
