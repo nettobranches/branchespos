@@ -98,7 +98,9 @@ router.get('/fixdates', function(req, res, next){
 });
 
 router.get('/fix_ventas_productos', function(req, res, next){
-  model.list().then(function(mres){
+  model.clearProd().then(function(){
+    return model.list()
+  }).then(function(mres){
     return Promise.each(mres, eachVentas);
   }).then(function(param){
     // console.log('param', param);

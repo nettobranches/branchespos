@@ -42,12 +42,26 @@ var model = {
             });
         })// promise
     } // save
+    ,clearProd: function(){
+        return new Promise(function(resolve, reject){
+            var qry = "DELETE FROM ventas_productos"
+            // resolve(item);
+            db.run(qry, function(err){
+                console.log('clear err', err);
+                if(err){
+                    reject(err);
+                }else{
+                    resolve();
+                }
+            });
+        })// promise
+    } // saveProd
     ,saveProd: function(item){
         return new Promise(function(resolve, reject){
             var fecha = new Date();
             var nFecha = moment(fecha).format("YYYY-MM-DD HH:mm:ss");
             var qry = util.format('INSERT INTO ventas_productos (venta_id, codigo, nombre, talla, color, cantidad, p_u, descuento) VALUES( %s, \'%s\', \'%s\', \'%s\', \'%s\', %s, %s, %s)',
-            item.venta_id, item.codigo, item.nombre, item.talla || '', item.color || '', item.cantidad, item.p_u, item.descuento || 0);
+            item.venta_id, item.codigo, item.nombre.toUpperCase(), item.talla || '', item.color || '', item.cantidad, item.p_u, item.descuento || 0);
             console.log('qry', qry);
             // resolve(item);
             db.run(qry, function(err){

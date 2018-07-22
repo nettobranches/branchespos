@@ -11,6 +11,7 @@ var prestashopRouter = require('./routes/prestashop');
 var setupRouter = require('./routes/setup');
 var productosRouter = require('./routes/productos');
 var ventasRouter = require('./routes/ventas');
+var barcodesRouter = require('./routes/barcodes');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/clientes', indexRouter);
 app.use('/users', usersRouter);
 app.use('/prestashop', prestashopRouter);
 app.use('/setup', setupRouter);
+app.use('/barcodes', barcodesRouter);
 app.use('/api/productos', productosRouter);
 app.use('/api/ventas', ventasRouter);
 

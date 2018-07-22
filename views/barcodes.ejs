@@ -1,0 +1,28 @@
+
+<div id="wrapper" class="container">
+  <!-- In print media the p print will override the sm Small devices -->
+    <div class="row">
+        <div v-for="item in inventario" class=" col-sm-4 col-p-4 block">
+            <div class="center">
+                <svg class="barcode"
+                jsbarcode-width="2"
+                jsbarcode-height="25"
+                jsbarcode-fontSize="10"
+                :jsbarcode-value="item.id"
+                jsbarcode-textmargin="0"
+                jsbarcode-fontoptions="bold">
+                </svg>
+            </div>
+            <div class="center">
+                {{item.name}}
+            </div>
+        </div>
+      <!-- <div class=" col-sm-4 col-p-4 block">
+        <svg class="barcode"
+          jsbarcode-value="123456789012"
+          jsbarcode-textmargin="0"
+          jsbarcode-fontoptions="bold">
+        </svg>
+      </div> -->
+    </div>
+</div>
