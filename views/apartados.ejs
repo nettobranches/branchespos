@@ -20,9 +20,9 @@
 </div><!-- /.row -->
 
 <cliente></cliente>
-<search-client></search-client>
+<!-- <search-client></search-client> -->
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-lg-12">
       <h2>Búsqueda de apartado</h2>
         <div class="form-group input-group">
@@ -63,8 +63,71 @@
 </div><!-- /.row -->
 
 <div class="row ">
+<h2>Cliente </h2>
+</div><!-- /.row -->
+<div class="row">
+  <div class="col-lg-3">
+      <div class="form-group">
+          <label>Folio</label>
+          <input type="text" v-model="cVentaDetalle.id" class="form-control" disabled>
+          <!-- <p class="help-block">Example block-level help text here.</p> -->
+      </div>
+  </div>
+  <div class="col-lg-3">
+      <div class="form-group">
+          <label>Fecha</label>
+          <input type="text" v-model="cVentaDetalle.fecha" class="form-control" disabled>
+          <!-- <p class="help-block">Example block-level help text here.</p> -->
+      </div>
+  </div>
+  <div class="col-lg-3">
+      <div class="form-group">
+          <label>Total</label>
+          <input type="text" v-model="cVentaDetalle.total" class="form-control" disabled>
+          <!-- <p class="help-block">Example block-level help text here.</p> -->
+      </div>
+  </div>
+</div><!-- /.row -->
+
+<div class="row">
   <div class="col-lg-12">
-    <h2>Articulos adquiridos</h2>
+    <h2> Nuevo Producto</h2>
+  </div>
+  <div class="col-lg-3">
+      <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" v-model="nitem.name" class="form-control">
+          <!-- <p class="help-block">Example block-level help text here.</p> -->
+      </div>
+  </div>
+  <div class="col-lg-2">
+      <div class="form-group">
+          <label>Talla</label>
+          <input type="text" v-model="nitem.talla" class="form-control">
+      </div>
+  </div>
+  <div class="col-lg-2">
+      <div class="form-group">
+          <label>Color</label>
+          <input type="text" v-model="nitem.color" class="form-control">
+      </div>
+  </div>
+  <div class="col-lg-2">
+      <div class="form-group">
+          <label>Precio</label>
+          <input type="text" v-model="nitem.price" class="form-control">
+      </div>
+  </div>
+  <div class="col-lg-2">
+      <div class="form-group">
+          <button v-on:click="add_new()" class="btn btn-lg btn-primary" type="button"> Agregar  </button>
+      </div>
+  </div>
+</div><!-- /.row -->
+
+<div class="row ">
+  <div class="col-lg-12">
+    <h2>Articulos</h2>
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-striped tablesorter">
         <thead>
