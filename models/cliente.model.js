@@ -14,7 +14,7 @@ var model = {
       });
     })// promise
   } // list
-  ,search: function(searchFld){
+  ,getCliente: function(searchFld){
     return new Promise(function(resolve, reject){
       // var qry = util.format('SELECT * FROM %s ', table);
       var sqry = "SELECT C.* FROM clientes C \
