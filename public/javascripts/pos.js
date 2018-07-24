@@ -26,6 +26,7 @@ var vm = new Vue({
     imprimir_ticket: true,
     cVenta: [],
     cVentaDetalle: {},
+    cliente:{},
     productos:[]
   },
   methods:{

@@ -18,9 +18,12 @@
         <button type="button" class="btn btn-primary btn-lg">Apartado Existente</button>
     </div>
 </div><!-- /.row -->
-
+{{cliente}}
+{{productos}}
+<nuevo-cliente v-bind:cliente.sync="cliente"></nuevo-cliente>
 <nuevo-producto v-bind:productos.sync="productos" ></nuevo-producto>
 <grid-producto v-bind:productos="productos" ></grid-producto>
+<nuevo-apartado v-bind:cliente="cliente" v-bind:productos="productos"></nuevo-apartado>
 
 <!-- <apartado></apartado>
 <cliente></cliente>

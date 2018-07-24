@@ -34,6 +34,41 @@
   </div><!-- /.row -->
 
 </template> <!-- /template -->
+<template id="nuevo-cliente">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>Agregar Cliente</h2>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" v-model="nitem.nombre" class="form-control">
+            <!-- <p class="help-block">Example block-level help text here.</p> -->
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>Teléfono</label>
+            <input type="text" v-model="nitem.telefono" class="form-control">
+            <!-- <p class="help-block">Example block-level help text here.</p> -->
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" v-model="nitem.email" class="form-control">
+            <!-- <p class="help-block">Example block-level help text here.</p> -->
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group">
+            <button v-on:click="add()" class="btn btn-lg btn-primary" type="button"> Agregar  </button>
+        </div>
+    </div>
+
+  </div><!-- /.row -->
+
+</template> <!-- /template -->
 <template id="search-client">
     <div class="row">
       <div class="col-lg-12">
@@ -62,43 +97,13 @@
     </div><!-- /.row -->
 </template>
 
-<template id="apartado">
+<template id="nuevo-apartado">
 
-    <div class="row ">
-      <div class="col-lg-12">
-        <h2>Articulos</h2>
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover table-striped tablesorter">
-            <thead>
-              <tr>
-                <th class="header">Codigo <i class="fa fa-sort"></i></th>
-                <th class="header">Nombre <i class="fa fa-sort"></i></th>
-                <th class="header">Talla. <i class="fa fa-sort"></i></th>
-                <th class="header">Color. <i class="fa fa-sort"></i></th>
-                <th class="header">Cantidad <i class="fa fa-sort"></i></th>
-                <th class="header">P/U. <i class="fa fa-sort"></i></th>
-                <th class="header">Descuento <i class="fa fa-sort"></i></th>
-                <th class="header">Importe <i class="fa fa-sort"></i></th>
-                <th class="header">Opciones </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(item, key) in cVenta" >
-                <td> {{item.codigo}} </td>
-                <td> {{item.nombre}} </td>
-                <td> {{item.talla}} </td>
-                <td> {{item.color}} </td>
-                <td> {{item.cantidad}} </td>
-                <td> {{item.p_u | currency}} </td>
-                <td> {{item.discount}} </td>
-                <td> {{item.importe | currency}} </td>
-                <td> <button v-on:click="" type="button" class="btn btn-warning">Cambiar</button> </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <div class="row">
+      <div class="col-lg-6" style="text-align: center">
+          <button v-on:click="save()" type="button" class="btn btn-primary btn-lg"> Guardar</button>
       </div>
-    </div><!-- /.row -->
+  </div><!-- /.row -->
 </template>
 
 <template id="nuevo-producto">

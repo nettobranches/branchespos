@@ -21,6 +21,21 @@ Vue.component('cliente',{
     } // methods
 }); // component cliente
 
+Vue.component('nuevo-cliente',{
+    template:"#nuevo-cliente",
+    props:['cliente'],
+    data:function () {
+        return {
+          nitem: {}
+        }
+    }, // data
+    methods:{
+        add: function(){
+            this.$emit('update:cliente', this.nitem)
+        } // add
+    } // methods
+}); // component nuevo-cliente
+
 Vue.component('search-client',{
     template:"#search-client",
     data:function () {
