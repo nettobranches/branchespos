@@ -6,7 +6,7 @@ Vue.component('nuevo-apartado',{
     methods:{
         save: function(){
             var _this = this;
-            console.log('cliente', this.cliente, 'productos', this.productos);
+            // console.log('cliente', this.cliente, 'productos', this.productos);
             if (this.cliente && this.productos){
                 // guarda producto
                 postDoc('/api/apartados/save/', {cliente: this.cliente, productos: this.productos, abonos: this.abonos}, function(res){
