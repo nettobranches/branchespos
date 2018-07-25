@@ -27,7 +27,10 @@ var vm = new Vue({
     cVenta: [],
     cVentaDetalle: {},
     cliente:{},
-    productos:[]
+    productos:[],
+    apartado_btns: false,
+    apartado_nuevo: false,
+    abonos: []
   },
   methods:{
     sync_prods: function(){

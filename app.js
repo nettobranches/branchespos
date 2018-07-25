@@ -13,6 +13,7 @@ var productosRouter = require('./routes/productos');
 var ventasRouter = require('./routes/ventas');
 var clientesRouter = require('./routes/clientes');
 var barcodesRouter = require('./routes/barcodes');
+var apartadosRouter = require('./routes/apartados');
 
 var app = express();
 
@@ -42,6 +43,8 @@ app.use('/barcodes', barcodesRouter);
 app.use('/api/productos', productosRouter);
 app.use('/api/ventas', ventasRouter);
 app.use('/api/clientes', clientesRouter);
+app.use('/api/apartados', apartadosRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

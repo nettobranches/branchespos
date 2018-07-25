@@ -106,6 +106,48 @@
   </div><!-- /.row -->
 </template>
 
+<template id="abono-apartado">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2> Abono</h2>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>cantidad $</label>
+            <input type="text" v-model="cantidad" class="form-control">
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group">
+            <button v-on:click="add()" class="btn btn-lg btn-primary" type="button"> Agregar  </button>
+        </div>
+    </div>
+  </div><!-- /.row -->
+</template>
+
+<template id="grid-abono-apartado">
+    <div class="col-lg-12">
+      <h2>Abonos</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped tablesorter">
+          <thead>
+            <tr>
+              <th class="header">Fecha <i class="fa fa-sort"></i></th>
+              <th class="header">Cantidad <i class="fa fa-sort"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-if="abonos" v-for="(item, key) in abonos" >
+              <td> {{item.fecha}} </td>
+              <td> {{item.cantidad}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /.row -->
+</template>
+
 <template id="nuevo-producto">
   <div class="row">
     <div class="col-lg-12">
@@ -144,7 +186,6 @@
 </template>
 
 <template id="grid-producto">
-  <div v-on:newprod="loadNewProd()" class="row ">
     <div class="col-lg-12">
       <h2>Articulos</h2>
       <div class="table-responsive">
