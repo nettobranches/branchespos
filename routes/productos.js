@@ -13,6 +13,16 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.get('/get_colors', function(req, res, next) {
+  console.log('getcolors');
+  model.colores().then(function(mres){
+    console.log('mres', mres);
+    res.send({items:mres, success: true});
+  }).catch(function(err){
+    res.send({items:[], success: false});
+  })
+});
+
 router.get('/:id', function(req, res, next) {
   model.stock(req.params.id).then(function(mres){
     console.log('mres', mres);
@@ -42,5 +52,27 @@ router.post('/save', function(req, res, next) {
     res.send({items:[], success: false});
   })
 });
+
+router.post('/update_upc', function(req, res, next) {
+    console.log("body",req.body);
+    var nItem = req.body;
+    model.updateCodeParent(nItem).then(function(){
+        res.send({ success: true});
+    }).catch(function(err){
+        res.send({ success: false});
+    })
+});
+
+router.post('/update_color_upc', function(req, res, next) {
+    console.log("body",req.body);
+    var nItem = req.body;
+    model.updateCodeColor(nItem).then(function(){
+        res.send({ success: true});
+    }).catch(function(err){
+        res.send({ success: false});
+    })
+});
+
+
 
 module.exports = router;

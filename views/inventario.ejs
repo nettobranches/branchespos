@@ -57,19 +57,19 @@
         <thead>
           <tr>
             <th class="header">Id <i class="fa fa-sort"></i></th>
+            <th class="header">Código <i class="fa fa-sort"></i></th>
             <th class="header">Nombre <i class="fa fa-sort"></i></th>
             <th class="header">Precio <i class="fa fa-sort"></i></th>
             <th class="header">Existencias <i class="fa fa-sort"></i></th>
-            <th class="header">Opciones </th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in inventario" >
             <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
+            <td> <input v-on:keyup.enter="updateProdUpc(item.id, item.upc)" v-model="item.upc" /> </td>
+            <td> <a :href="'/inventario/' + item.id" >{{item.name}}</a> </td>
             <td>{{item.price | currency }}</td>
             <td>{{ inventarioQty(item) }}</td>
-            <td> <a :href="'/inventario/' + item.id" >ver</a> </td>
           </tr>
         </tbody>
       </table>

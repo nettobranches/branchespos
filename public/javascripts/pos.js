@@ -30,7 +30,9 @@ var vm = new Vue({
     productos:[],
     apartado_btns: false,
     apartado_nuevo: false,
-    abonos: []
+    abonos: [],
+    colores: [],
+    prod_no_encontrado: false
   },
   methods:{
     sync_prods: function(){
@@ -70,8 +72,8 @@ var vm = new Vue({
     ,list_inventario_item: function(id){
       var _this = this;
       loadDoc('/api/productos/'+id, function(res){
-        console.log('productos', res.data.items);
-        _this.inventario = res.data.items;
+        console.log('productos', res.items);
+        _this.inventario = res.items;
       });
     }// list_inventario
     ,inventarioQty: function(item){
@@ -94,9 +96,11 @@ var vm = new Vue({
       postDoc('/api/productos/search',{search_fld: _this.searchFld}, function(res){
         console.log('productos', res.items);
         _this.inventario = res.items;
-
+        _this.prod_no_encontrado = false;
         if( res.items.length == 1 ){
           _this.caja_add(res.items[0])
+        }else if(res.items.length < 1){
+          _this.prod_no_encontrado = true;
         }
         _this.searchFld = '';
       });
@@ -121,6 +125,7 @@ var vm = new Vue({
             _this.a_pagar += nitemPrice;
             _this.nitemIdx++;
             console.log('cart', _this.cart);
+            _this.prod_no_encontrado = false;
           // }
     } // add_new
     ,caja_add: function(item){
@@ -216,7 +221,26 @@ var vm = new Vue({
         _this.searchFld = '';
       });
     }// caja_search
-  }
+    ,updateProdUpc: function(id, upc){
+      postDoc('/api/productos/update_upc', {id: id, upc: upc}, function(res){
+          // $('#modalPago').modal('show');
+          console.log('actualizado')
+      });
+    }// updateProdUpc
+    ,updateColorUpc: function(product_id, option_id, upc){
+      postDoc('/api/productos/update_color_upc', {product_id: product_id, upc: upc, option_id: option_id }, function(res){
+          // $('#modalPago').modal('show');
+          console.log('actualizado')
+      });
+    }// updateColorUpc
+    ,list_colors: function(id){
+      var _this = this;
+      loadDoc('/api/productos/get_colors', function(res){
+        console.log('colores', res.items);
+        _this.colores = res.items;
+      });
+    }// list_inventario
+  } //
 });
 
 
