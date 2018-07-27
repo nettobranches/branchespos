@@ -53,6 +53,17 @@ router.post('/save', function(req, res, next) {
   })
 });
 
+router.post('/save_color', function(req, res, next) {
+  console.log("body",req.body);
+  // res.send({items:[], success: false});
+  model.saveColor(req.body.nItem).then(function(mres){
+    console.log('mres', mres);
+    res.send({success: true});
+  }).catch(function(err){
+    res.send({success: false});
+  })
+});
+
 router.post('/update_upc', function(req, res, next) {
     console.log("body",req.body);
     var nItem = req.body;

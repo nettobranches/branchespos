@@ -90,7 +90,19 @@ var vm = new Vue({
         }else{
             // $('#modalPagoError').modal('show');
         }
-    }// caja_pagar
+    }// add_inventario
+    ,add_inventario_color: function(){
+        var _this = this;
+        if (true){
+            // guarda producto
+            var nItem = _this.nitem;
+            postDoc('/api/productos/save_color/', {nItem: nItem}, function(res){
+                // $('#modalPago').modal('show');
+            });
+        }else{
+            // $('#modalPagoError').modal('show');
+        }
+    }// add_inventario
     ,caja_search: function(){
       var _this = this;
       postDoc('/api/productos/search',{search_fld: _this.searchFld}, function(res){

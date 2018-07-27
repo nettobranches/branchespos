@@ -77,7 +77,18 @@ var model = {
           resolve(rows);
       });
     })// promise
-  } // search
+  } // save
+  ,saveColor: function(item){
+    return new Promise(function(resolve, reject){
+      var qry = util.format('INSERT INTO combinations (product_id, option_id, upc ) VALUES (%s, %s, "%s")',
+        item.product_id, item.option_id, item.upc);
+      console.log('qry', qry);
+      db.all(qry, function(err, rows) {
+          console.log('rows', rows);
+          resolve(rows);
+      });
+    })// promise
+  } // saveColor
   ,updateCodeParent:function(item){
       return new Promise(function(resolve, reject){
           var sqry ='UPDATE productos \
