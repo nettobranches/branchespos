@@ -11,3 +11,7 @@ SET
   from productos P
   join producto_colores PC on P.id = PC.p_id
   join colores C ON PC.option_id = C.id
+
+CREATE TABLE `colores` ( `id` , `color` , `name` )
+
+CREATE TABLE "producto_colores" ( `p_id` INTEGER, `option_id` INTEGER, `upc` TEXT )

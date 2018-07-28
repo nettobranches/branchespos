@@ -1,0 +1,64 @@
+id_product,id_product_attribute,option_id,name
+1,26,50,negro
+1,35,51,a. marino
+1,42,52,cocoa
+1,49,53,cafe
+1,56,54,beige
+1,63,55,vino
+2,98,50,negro
+2,96,56,bleach
+2,97,57,stone
+2,89,58,colores
+6,320,51,a. marino
+6,306,60,verde
+6,319,75,a. cielo
+6,321,76,cereza
+8,305,58,colores
+9,290,58,colores
+10,256,50,negro
+10,285,51,a. marino
+10,289,54,beige
+10,287,59,arena
+10,288,60,verde
+11,231,50,negro
+11,254,51,a. marino
+11,253,54,beige
+12,199,50,negro
+12,229,51,a. marino
+12,228,53,cafe
+12,230,61,gris
+14,487,91,moving light stone
+14,494,92,moving blue
+14,504,94,ring stone
+14,505,95,avy bleach
+14,506,96,ring carbon
+15,542,77,rojo
+15,538,81,blanco
+15,507,97,a. francia
+15,539,99,paja
+15,540,100,esencia
+15,541,102,az. celeste
+16,543,50,negro
+16,584,51,a. marino
+16,586,53,cafe
+16,589,77,rojo
+16,588,81,blanco
+16,585,88,khaki
+16,587,89,hueso
+16,590,90,olivo
+17,642,75,a. cielo
+17,650,80,a. rey
+17,606,83,coral
+17,676,85,turquesa
+17,626,86,v. menta
+17,666,89,hueso
+17,674,104,v. manzana
+17,594,105,fuscia
+17,634,106,jade
+17,658,107,palo de rosa
+18,618,82,rosa
+18,609,85,turquesa
+20,679,78,azul
+20,677,81,blanco
+20,681,82,rosa
+20,684,142,lila
