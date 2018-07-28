@@ -16,7 +16,7 @@
         <div class="form-group input-group">
           <input v-model="searchFld"  type="text" class="form-control" v-on:keyup.enter="caja_search">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+            <button v-on:click="caja_search" class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
           </span>
         </div>
   </div>

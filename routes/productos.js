@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 router.get('/get_colors', function(req, res, next) {
   console.log('getcolors');
   model.colores().then(function(mres){
-    console.log('mres', mres);
+    // console.log('mres', mres);
     res.send({items:mres, success: true});
   }).catch(function(err){
     res.send({items:[], success: false});

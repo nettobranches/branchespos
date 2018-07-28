@@ -60,7 +60,6 @@
             <th class="header">Código <i class="fa fa-sort"></i></th>
             <th class="header">Nombre <i class="fa fa-sort"></i></th>
             <th class="header">Precio <i class="fa fa-sort"></i></th>
-            <th class="header">Existencias <i class="fa fa-sort"></i></th>
           </tr>
         </thead>
         <tbody>
@@ -69,7 +68,6 @@
             <td> <input v-on:keyup.enter="updateProdUpc(item.id, item.upc)" v-model="item.upc" /> </td>
             <td> <a :href="'/inventario/' + item.id" >{{item.name}}</a> </td>
             <td>{{item.price | currency }}</td>
-            <td>{{ inventarioQty(item) }}</td>
           </tr>
         </tbody>
       </table>

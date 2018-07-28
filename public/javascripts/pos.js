@@ -73,7 +73,7 @@ var vm = new Vue({
       var _this = this;
       loadDoc('/api/productos/'+id, function(res){
         console.log('productos', res.items);
-        _this.inventario = res.items;
+        _this.inventario = res.items || [];
       });
     }// list_inventario
     ,inventarioQty: function(item){
@@ -96,6 +96,7 @@ var vm = new Vue({
         if (true){
             // guarda producto
             var nItem = _this.nitem;
+            nItem.p_id = itemId;
             postDoc('/api/productos/save_color/', {nItem: nItem}, function(res){
                 // $('#modalPago').modal('show');
             });
