@@ -15,3 +15,8 @@ SET
 CREATE TABLE `colores` ( `id` , `color` , `name` )
 
 CREATE TABLE "producto_colores" ( `p_id` INTEGER, `option_id` INTEGER, `upc` TEXT )
+
+select nombre, p_u, count(p_u) num_ventas from ventas_productos VP
+where tipo = 'R'
+group by p_u
+order by num_ventas desc

@@ -6,6 +6,9 @@ var _ = require('lodash');
 var csv = require('express-csv');
 var moment = require('moment');
 var Promise = require('bluebird');
+
+var ticketId = 0;
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   model.list().then(function(mres){
@@ -47,18 +50,33 @@ router.get('/export.csv', function(req, res, next) {
 }); // end export.csv
 
 router.post('/save/:imprimir_ticket', function(req, res, next) {
-    console.log("body",req.body);
+    // console.log("body",req.body);
     var nVenta = req.body;
     var imprimir_ticket = JSON.parse(req.params.imprimir_ticket);
 
-    console.log('imprimir ticket', imprimir_ticket, typeof imprimir_ticket);
+    // console.log('imprimir ticket', imprimir_ticket, typeof imprimir_ticket);
 
     nVenta.json = JSON.stringify(nVenta.cart);
     nVenta.cambio = parseInt(nVenta.recibido) - parseInt(nVenta.total);
-    console.log('nventa', nVenta);
+    // console.log('nventa', nVenta);
     model.save(nVenta)
     .then(model.getFolio)
     .then(function(paramVenta){
+        console.log('paramVenta', paramVenta);
+        // return new Promise(function(resolve, reject){
+        //     resolve(paramVenta);
+        // })
+        ticketId = paramVenta.folio;
+        var aProds = Object.keys(nVenta.cart).map(function (key) { return nVenta.cart[key]; });
+        console.log('cart', aProds);
+        return Promise.each(aProds, eachVProds).then(function(){
+            return new Promise(function(resolve, reject){
+                resolve(paramVenta);
+            });
+        });
+    })
+    .then(function(paramVenta){
+        console.log('paramVenta', paramVenta);
         if(imprimir_ticket){
             return printController.receipt(paramVenta)
         }else{
@@ -66,11 +84,16 @@ router.post('/save/:imprimir_ticket', function(req, res, next) {
         }
     })
     .then(function(){
+        console.log('success');
         res.send({ success: true});
     }).catch(function(err){
         res.send({ success: false, err: err});
     })
 }); // end save
+
+function eachSaveProdVenta(iProd){
+
+}
 
 router.get('/resumen', function(req, res, next){
     model.ventasResumen().then(function(rResumen){
@@ -110,7 +133,7 @@ router.get('/fix_ventas_productos', function(req, res, next){
   })
 });
 
-var ticketId = 0;
+
 function eachVentas(item){
     // console.log('item', item);
     ticketId = item.id;
