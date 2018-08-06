@@ -20,3 +20,7 @@ select nombre, p_u, count(p_u) num_ventas from ventas_productos VP
 where tipo = 'R'
 group by p_u
 order by num_ventas desc
+
+SELECT VP.id, VP.nombre, VP.cantidad, VP.P_U, V.fecha FROM ventas_productos VP
+JOIN ventas V ON V.id = VP.venta_id
+ORDER BY V.fecha DESC
