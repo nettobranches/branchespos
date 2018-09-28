@@ -13,7 +13,7 @@ var model = {
 	//   LEFT JOIN stock_availables S2 ON P.id = S2.id_product AND S2.id_product_attribute > 0\
 	// GROUP BY P.id"
       var qry = "SELECT P.*\
-          FROM productos P"
+          FROM productos P order by P.id DESC"
       db.all(qry, function(err, rows) {
           // console.log('rows', rows);
           resolve(rows);

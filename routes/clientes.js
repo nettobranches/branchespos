@@ -28,5 +28,14 @@ router.post('/search', function(req, res, next){
       res.send({items:[], success: false});
     });
 }); // search
+router.post('/get', function(req, res, next){
+    var params = req.body;
+    model.getClienteClave(params.nItem.clave).then(function(rCliente){
+      console.log('rCliente', rCliente);
+      res.send({items:rCliente, success: true});
+    }).catch(function(err){
+      res.send({items:[], success: false});
+    });
+}); // search
 
 module.exports = router;

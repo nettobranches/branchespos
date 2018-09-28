@@ -24,3 +24,9 @@ order by num_ventas desc
 SELECT VP.id, VP.nombre, VP.cantidad, VP.P_U, V.fecha FROM ventas_productos VP
 JOIN ventas V ON V.id = VP.venta_id
 ORDER BY V.fecha DESC
+
+select nombre, p_u, sum(cantidad) cant
+from ventas_productos
+where tipo = 'A'
+group by nombre, p_u
+order by cant desc

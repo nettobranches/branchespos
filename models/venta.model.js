@@ -26,11 +26,12 @@ var model = {
         })// promise
     } // export
     ,save: function(item){
+        console.log('saveitem', item);
         return new Promise(function(resolve, reject){
             var fecha = new Date();
             var nFecha = moment(fecha).format("YYYY-MM-DD HH:mm:ss");
-            var qry = util.format('INSERT INTO ventas (json, fecha, vendedor_id, total, recibido, cambio) VALUES( \'%s\', \'%s\', %s, %s, %s, %s  )',
-            item.json, nFecha, item.vendedor_id, item.total, item.recibido, item.cambio);
+            var qry = util.format('INSERT INTO ventas (json, fecha, vendedor_id, total, recibido, cambio, cliente_clave) VALUES( \'%s\', \'%s\', %s, %s, %s, %s, \'%s\'  )',
+            item.json, nFecha, item.vendedor_id, item.total, item.recibido, item.cambio, item.cliente_clave || '' );
             console.log('qry', qry);
             db.run(qry, function(err){
                 console.log('err', err);

@@ -16,7 +16,22 @@ Vue.component('nuevo-apartado',{
             }else{
                 // $('#modalPagoError').modal('show');
             }
-        } // add
+        } // save
+    } // methods
+}); // component cliente
+
+Vue.component('update-apartado',{
+    template:"#update-apartado",
+    props:['apartado', 'abonos'],
+    methods:{
+        update: function(){
+            var _this = this;
+            // guarda producto
+            postDoc('/api/apartados/abono/', {apartado: this.apartado, abonos: this.abonos}, function(res){
+                // $('#modalPago').modal('show');
+                alert('Actualizado')
+            });
+        } // save
     } // methods
 }); // component cliente
 
@@ -52,3 +67,25 @@ Vue.component('grid-abono-apartado',{
         add: function(){} // add
     } // methods
 }); // component cliente
+
+Vue.component('search-apartado',{
+    template:"#search-apartado",
+    props:['abonos', 'productos', 'apartado'],
+    data:function(){
+        return {
+            searchFld: "",
+            apartado: {}
+        }},
+    methods:{
+        search: function(){
+            var _this = this;
+            postDoc('/api/apartados/search', {search_fld: this.searchFld}, function(res){
+                console.log('apartado ',res);
+                _this.apartado = res.items[0];
+                _this.$emit('update:abonos', JSON.parse(_this.apartado.json_abonos));
+                _this.$emit('update:productos', JSON.parse(_this.apartado.json_productos));
+                _this.$emit('update:apartado', {id: _this.apartado.id});
+            });
+        } // search
+    } // methods
+}); // component search-apartado

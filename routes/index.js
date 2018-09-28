@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var title ="Pjjeans POS";
+var title =process.env.TITLE;
 var menu = {};
 function menuClear(){
   menu = {

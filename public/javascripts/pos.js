@@ -26,13 +26,16 @@ var vm = new Vue({
     imprimir_ticket: true,
     cVenta: [],
     cVentaDetalle: {},
+    apartado:{},
     cliente:{},
     productos:[],
     apartado_btns: false,
     apartado_nuevo: false,
     abonos: [],
     colores: [],
-    prod_no_encontrado: false
+    prod_no_encontrado: false,
+
+    cliente_clave: ''
   },
   methods:{
     sync_prods: function(){
@@ -86,6 +89,8 @@ var vm = new Vue({
             var nItem = _this.nitem;
             postDoc('/api/productos/save/', {nItem: nItem}, function(res){
                 // $('#modalPago').modal('show');
+                alert('producto agregado');
+                this.list_historial();
             });
         }else{
             // $('#modalPagoError').modal('show');
@@ -200,6 +205,7 @@ var vm = new Vue({
               vendedor_id: vendedorId,
               total: _this.a_pagar,
               recibido: _this.pago,
+              cliente_clave: _this.cliente_clave
             };
             postDoc('/api/ventas/save/'+_this.imprimir_ticket, nVenta, function(res){
                 $('#modalPago').modal('show');
@@ -223,6 +229,7 @@ var vm = new Vue({
         _this.a_pagar = 0;
         _this.pago = 0;
         _this.cambio = 0;
+        _this.cliente_clave = '';
         $('#modalPago').modal('hide');
     }// caja_limpiar
     ,ticket_search: function(){

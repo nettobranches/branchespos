@@ -208,13 +208,24 @@
   </div>
 </div><!-- /.row -->
 <div class="row ">
-    <div class="col-lg-6">
+  <div class="col-lg-4 pagar">
+    <div class="form-inline">
+        <div class="form-group">
+            <label class="sr-only" for="exampleInputAmount">Amount </label>
+            <div class="input-group">
+                <div class="input-group-addon">Cliente</div>
+                <input type="text" class="form-control input-lg" placeholder="" v-model="cliente_clave">
+            </div>
+        </div>
+  </div>
+  </div>
+    <div class="col-lg-2">
         <h2 class="text-right" > pago </h2>
     </div>
     <div class="col-lg-2 pagar">
         <div class="form-inline">
             <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                <label class="sr-only" for="exampleInputAmount">Amount </label>
                 <div class="input-group">
                     <div class="input-group-addon">$</div>
                     <input type="text" class="form-control input-lg" placeholder="0.00" v-model="pago">

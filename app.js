@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 
+require('dotenv').config({path: __dirname+"/.env"});
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var prestashopRouter = require('./routes/prestashop');

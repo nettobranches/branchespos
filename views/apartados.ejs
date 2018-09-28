@@ -19,80 +19,16 @@
     </div>
 </div><!-- /.row -->
 
-<div class="row" v-bind:class="{ hidden: !(apartado_btns && !apartado_nuevo) }">
-  <div class="col-lg-12">
-      <h2>Búsqueda de apartado</h2>
-        <div class="form-group input-group">
-          <input v-model="searchFld"  type="text" class="form-control" v-on:keyup.enter="caja_search">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-          </span>
-        </div>
-  </div>
-</div><!-- /.row -->
-
-<div class="row" v-bind:class="{ hidden: !apartado_btns }">
-  <div class="col-lg-12 ">
-  <h2>Detalles </h2>
-  </div><!-- /.row -->
-  <div class="col-lg-3">
-      <div class="form-group">
-          <label>Folio</label>
-          <input type="text" v-model="cVentaDetalle.id" class="form-control" disabled>
-          <!-- <p class="help-block">Example block-level help text here.</p> -->
-      </div>
-  </div>
-  <div class="col-lg-3">
-      <div class="form-group">
-          <label>Fecha</label>
-          <input type="text" v-model="cVentaDetalle.fecha" class="form-control" disabled>
-          <!-- <p class="help-block">Example block-level help text here.</p> -->
-      </div>
-  </div>
-  <div class="col-lg-3">
-      <div class="form-group">
-          <label>Total</label>
-          <input type="text" v-model="cVentaDetalle.total" class="form-control" disabled>
-          <!-- <p class="help-block">Example block-level help text here.</p> -->
-      </div>
-  </div>
-</div><!-- /.row -->
-
 <nuevo-cliente v-bind:class="{ hidden: !(apartado_btns && apartado_nuevo) }" v-bind:cliente.sync="cliente"></nuevo-cliente>
 
-<div class="row" v-bind:class="{ hidden: !apartado_btns }">
-  <div class="col-lg-12">
-  <h2>Cliente </h2>
-  </div><!-- /.row -->
-  <div class="col-lg-3">
-      <div class="form-group">
-          <label>Folio</label>
-          <input type="text" v-model="cVentaDetalle.id" class="form-control" disabled>
-          <!-- <p class="help-block">Example block-level help text here.</p> -->
-      </div>
-  </div>
-  <div class="col-lg-3">
-      <div class="form-group">
-          <label>Fecha</label>
-          <input type="text" v-model="cVentaDetalle.fecha" class="form-control" disabled>
-          <!-- <p class="help-block">Example block-level help text here.</p> -->
-      </div>
-  </div>
-  <div class="col-lg-3">
-      <div class="form-group">
-          <label>Total</label>
-          <input type="text" v-model="cVentaDetalle.total" class="form-control" disabled>
-          <!-- <p class="help-block">Example block-level help text here.</p> -->
-      </div>
-  </div>
-</div><!-- /.row -->
+<search-apartado v-bind:class="{ hidden: !(apartado_btns && !apartado_nuevo) }" v-bind:abonos.sync="abonos" v-bind:productos.sync="productos" v-bind:apartado.sync="apartado" ></search-apartado>
 
 <nuevo-producto v-bind:class="{ hidden: !(apartado_btns && apartado_nuevo) }" v-bind:productos.sync="productos" ></nuevo-producto>
 <grid-producto v-bind:class="{ hidden: !apartado_btns }" v-bind:productos="productos" ></grid-producto>
 <abono-apartado v-bind:class="{ hidden: !apartado_btns }" v-bind:abonos.sync="abonos"></abono-apartado>
 <grid-abono-apartado v-bind:class="{ hidden: !apartado_btns }" v-bind:abonos="abonos"></grid-abono-apartado>
-<nuevo-apartado v-bind:class="{ hidden: !apartado_btns }" v-bind:cliente="cliente" v-bind:productos="productos" v-bind:abonos="abonos"></nuevo-apartado>
-
+<nuevo-apartado v-bind:class="{ hidden: !(apartado_btns && apartado_nuevo) }" v-bind:cliente="cliente" v-bind:productos="productos" v-bind:abonos="abonos"></nuevo-apartado>
+<update-apartado v-bind:apartado="apartado" v-bind:class="{ hidden: !(apartado_btns && !apartado_nuevo)  }" v-bind:cliente="cliente" v-bind:abonos="abonos"></update-apartado>
 <!-- <apartado></apartado>
 <cliente></cliente>
 <search-client></search-client> -->

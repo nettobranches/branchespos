@@ -35,6 +35,7 @@
             <th class="header">Fecha <i class="fa fa-sort"></i></th>
             <th class="header">Productos <i class="fa fa-sort"></i></th>
             <th class="header">Total <i class="fa fa-sort"></i></th>
+            <th class="header">Opciones <i class="fa fa-sort"></i></th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +44,7 @@
             <td>{{ item.fecha }}</td>
             <td><div v-for="prods in format_productos(item.json)"> {{prods.nombre}} {{prods.color}} {{prods.talla}} | {{prods.cantidad}} X {{prods.p_u | currency}} | {{prods.importe | currency}} </div></td>
             <td>{{item.total | currency}}</td>
+            <td> <button>Cancelar</button> </td>
           </tr>
         </tbody>
       </table>
