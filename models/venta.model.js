@@ -30,8 +30,8 @@ var model = {
         return new Promise(function(resolve, reject){
             var fecha = new Date();
             var nFecha = moment(fecha).format("YYYY-MM-DD HH:mm:ss");
-            var qry = util.format('INSERT INTO ventas (json, fecha, vendedor_id, total, recibido, cambio, cliente_clave) VALUES( \'%s\', \'%s\', %s, %s, %s, %s, \'%s\'  )',
-            item.json, nFecha, item.vendedor_id, item.total, item.recibido, item.cambio, item.cliente_clave || '' );
+            var qry = util.format('INSERT INTO ventas (json, fecha, vendedor_id, total, recibido, cambio, cliente_clave, pago_tarjeta) VALUES( \'%s\', \'%s\', %s, %s, %s, %s, \'%s\', %s  )',
+            item.json, nFecha, item.vendedor_id, item.total, item.recibido, item.cambio, item.cliente_clave || '', item.pago_tarjeta );
             console.log('qry', qry);
             db.run(qry, function(err){
                 console.log('err', err);

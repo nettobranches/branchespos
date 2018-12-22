@@ -21,6 +21,10 @@
 
 <nuevo-cliente v-bind:class="{ hidden: !(apartado_btns && apartado_nuevo) }" v-bind:cliente.sync="cliente"></nuevo-cliente>
 
+<div>
+    <button> + agregar cliente </button>
+</div>
+
 <search-apartado v-bind:class="{ hidden: !(apartado_btns && !apartado_nuevo) }" v-bind:abonos.sync="abonos" v-bind:productos.sync="productos" v-bind:apartado.sync="apartado" ></search-apartado>
 
 <nuevo-producto v-bind:class="{ hidden: !(apartado_btns && apartado_nuevo) }" v-bind:productos.sync="productos" ></nuevo-producto>
@@ -58,3 +62,28 @@
           </div>
 
         </div> -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalNuevoCliente" tabindex="-1" role="dialog" aria-labelledby="modalNuevoCliente">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="row ">
+                    <div class="col-lg-6">
+                        <h2 class="text-right" > cambio </h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="text-left" > {{cambio | currency}} </h2>
+                    </div>
+                  </div><!-- /.row -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" v-on:click="caja_limpiar"> Aceptar </button>
+              </div>
+            </div>
+          </div>
+        </div>

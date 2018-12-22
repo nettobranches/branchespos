@@ -21,6 +21,7 @@ var vm = new Vue({
     a_pagar: 0,
     pago: 0,
     cambio: 0,
+    pago_c_tarjeta: false,
     nitem:{},
     nitemIdx: 0,
     imprimir_ticket: true,
@@ -195,6 +196,7 @@ var vm = new Vue({
     }// caja_rm
     ,caja_pagar: function(key){
         var _this = this;
+        // console.log("pago c tarjeta", _this.pago_c_tarjeta);
         var cambio = _this.pago - _this.a_pagar;
         if (cambio >= 0 && Object.keys(_this.cart).length > 0 && _this.pago >= _this.a_pagar){
             // guarda transaccion
@@ -205,7 +207,8 @@ var vm = new Vue({
               vendedor_id: vendedorId,
               total: _this.a_pagar,
               recibido: _this.pago,
-              cliente_clave: _this.cliente_clave
+              cliente_clave: _this.cliente_clave,
+              pago_tarjeta: _this.pago_c_tarjeta ? 1 : 0
             };
             postDoc('/api/ventas/save/'+_this.imprimir_ticket, nVenta, function(res){
                 $('#modalPago').modal('show');
