@@ -22,8 +22,36 @@ Vue.component('cliente',{
     } // methods
 }); // component cliente
 
-Vue.component('nuevo-cliente',{
-    template:"#nuevo-cliente",
+Vue.component('buscar-cliente',{
+    template:"#buscar-cliente",
+    props:['cliente'],
+    data:function () {
+        return {
+          nitem: {}
+        }
+    }, // data
+    methods:{
+        add: function(){
+            this.$emit('update:cliente', this.nitem)
+        } // add
+        ,client_search: function(){
+            var _this = this;
+            var nItem = _this.nitem;
+            console.log('nitem.clave', nItem.clave);
+            postDoc('/api/clientes/get/', {nItem: nItem}, function(res){
+                console.log('res', res);
+                if(res.success){
+                    _this.nitem = res.items[0];
+                    _this.$emit('update:cliente', _this.nitem)
+                }
+                // $('#modalPago').modal('show');
+            });
+        }
+    } // methods
+}); // component nuevo-cliente
+
+Vue.component('agregar-cliente',{
+    template:"#agregar-cliente",
     props:['cliente'],
     data:function () {
         return {
