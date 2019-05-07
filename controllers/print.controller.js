@@ -68,7 +68,47 @@ var printController = {
             reject();
         }
       });
-  } // test
+  } // receipt
+  ,ticket_apartado: function(params){
+
+    try{
+        device = escpos.USB.findPrinter() ? new escpos.USB() : null;
+    }catch( err ) {
+        console.log('err', err);
+    }
+
+
+    printer = device ? new escpos.Printer(device) : null;
+
+      var today = new Date();
+      strToday = moment(today).format("DD/MM/YY HH:mm");
+      folio = params.folio;
+      var item = params.item;
+      return new Promise(function(resolve, reject){
+        if(device && printer){
+            escpos.Image.load(__dirname + '/fbpjjeans.png', function(image){
+                device.open(function(){
+                    var prt = header(printer);
+
+                    console.log( "cart", item.cart);
+
+                    _.each(item.cart, function(iprod){
+                        prt = setProduct(prt, iprod);
+                    })
+
+                    prt = footer(prt, item, image);
+
+                    prt.close(function(){
+                        console.log('Close');
+                        resolve();
+                    })
+                });
+            });
+        }else{
+            reject();
+        }
+      });
+  } // ticket_apartado
   ,empty: function(){
       return new Promise(function(resolve, reject){ resolve(); });
   }
